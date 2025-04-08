@@ -2,37 +2,44 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-            System.out.println("Gracias por jugar. ¡Hasta la próxima!");
-            System.out.println("ADIVINA EL NUMERO SECRETO");
+        System.out.println("Gracias por jugar. ¡Hasta la próxima!");
+        System.out.println("ADIVINA EL NUMERO SECRETO");
 
-            for (int i = 0; i < 5; i++) {
-                System.out.println("TE QUEDAN " + (5 - i) + " VIDAS");
+        int i;
+        int numAleatorio = (int) (Math.random() * 100 + 1);
 
-                Scanner teclado = new Scanner(System.in);
-                int numAleatorio = (int) (Math.random() * 100 + 1);
+        for (i = 0; i < 5; i++) {
+            System.out.println("DISPONIBLES: " + (5 - i) + " VIDAS");
 
-                System.out.println("Introduce un número entre 1 y 100");
-                int numIngresado = teclado.nextInt();
+            Scanner teclado = new Scanner(System.in);
+
+            System.out.println("Introduce un número entre 1 y 100");
+            int numIngresado = teclado.nextInt();
 
                 if (numIngresado == numAleatorio) {
-                    System.out.println("¡Has acertado el número secreto!");
+                    System.out.println("¡HAS ENCONTRADO EL NUMERO SECRETO!");
+                    break;
+
                 } else if (numIngresado < numAleatorio) {
                     System.out.println("El número secreto es mayor que " + numIngresado);
                 } else {
                     System.out.println("El número secreto es menor que " + numIngresado);
                 }
-            }
+        }
 
-            System.out.println("VIDAS GAME OVER te has quedado sin vidas");
-            System.out.println("¿Quieres jugar de nuevo? (s/n)");
+        if (i == 5) {
+            System.out.println("¡GAME OVER! te quedaste sin vidas el numero era:" + numAleatorio);
+        }
 
-            Scanner scanner = new Scanner(System.in);
-            String respuesta = scanner.nextLine();
+        System.out.println("¿Quieres jugar de nuevo? (s/n)");
 
-            if (respuesta.equalsIgnoreCase("s")) {
-                main(args);
-            } else {
-                System.out.println("¡Hasta la próxima!");
-            }
+        Scanner scanner = new Scanner(System.in);
+        String respuesta = scanner.nextLine();
+
+        if (respuesta.equalsIgnoreCase("s")) {
+            main(args);
+        } else {
+            System.out.println("¡Hasta la próxima!");
+        }
     }
 }
